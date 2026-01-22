@@ -4,4 +4,7 @@
 *.npz
 *.pt
 *.gz
+*.ini
+*.gpickle
+*.pkl
 __pycache__/

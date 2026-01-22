@@ -1,48 +1,43 @@
 # Reto_10_Grupo_Amarillo
 Cosas a tener en cuenta:
 - Los scripts debrán ejecutarse en orden.
-- Se hará uso de los .csv proporcionados por BBVA para poder resolver el reto.
+- Se hará uso de los .csv proporcionados por Lookiero para poder resolver el reto.
 
 ## Datos
 En estas carpetas estan o se tienen que ubicar todos los datos utilizados.
 
 ### Originales
-Aquí se tienen que incluir todos los datos que se han otorgado al principido del reto  (csv proporcionados por BBVA)
+Aquí se tienen que incluir todos los datos que se han otorgado al principido del reto  (csv proporcionados por Lookiero).
 
 ### Transformados
-Datos generados después de la limpieza
+Datos generados después de la ejecucion de distintos scripts.
 
-## Graficos
-En esta carpeta se almacenarán los gráficos que se van generando a lo largo del proyecto
+## Grafo
+En esta carpeta se almacenará el grafo construido en el script de 01_Preprocesamiento_Analisis.
 
 ## Modelos
-En esta carpeta se almacenarán los modelos realizados 
-## MC_cerrada.py
-Contiene las funciones de MonteCarlo y fórmula cerrada
+En esta carpeta se almacenarán los modelos realizados.
 
-## Funciones_redes.py
-Contiene las funciones de las redes neuronales recurrentes
+## funciones.py
+Contiene las funciones que tienen en común distintos scripts.
 
-## 01-Ingesta_Limpieza.ipynb
-En este script  se cargan, se limpian y procesan los datos que se van a utilizar en el reto.
+## 01_Preprocesamiento_Analisis.ipynb
+En este script...
 
-## 02-Seleccion_activos.ipynb
-En este ipynb se encuentra el análisis y la selección de los activos financieros que formarán la cartera
+## 02_Modelado.ipynb
+En este ipynb...
 
-## 03-Analisis_activos.ipynb
-En este ipynb se realiza la descomposicón de las series temporales. 
+## producer.py
+...
 
-## 04-MonteCarlo_y_Formula_cerrada.ipynb
-En este script se realiza la simulación de MonteCarlo y el cálculo a través de la fórmula cerrada proporcionada por BBVA
+## consumer.py
+...
 
-## 05-RNN.ipynb
-Este script contiene la implementación de una Red Neuronal Recurrente (RNN) 
+## Analisis_UX.ipynb
+En este ipynb...
 
-## 06-Comparativa_metodos.ipynb
-En este script se comparan los resultados de los 3 métodos:
-  - Montecarlo
-  - Fórmula cerrada BBVA
-  - RNN
+## Caracterizacion_Analisis.ipynb
+En este script...
 
 ## Integrantes
 - Anne Martin Basterrechea

@@ -1,0 +1,20 @@
+name: R10_Amarillo
+channels:
+  - defaults
+dependencies:
+  - python=3.11
+  - pytorch
+  - cpuonly
+  - torchvision
+  - torchaudio
+  - matplotlib
+  - joblib
+  - pyg
+  - scikit-learn
+  - pandas
+  - numpy
+  - ipykernel
+  - seaborn
+  - xgboost
+  - catboost
+prefix: C:\Users\gorja\anaconda3\envs\R10_Amarillo

@@ -42,7 +42,7 @@ En este script se lleva a cabo la caracterizacion y analisis de los datos de Loo
 En esta carpeta se encuentran todos los archivos necesarios para ejecutar y poder visualizar la página web que se ha desarrollado.
 Aquí se describe la función de los archivos principales incluidos en la carpeta:
 #### HTML (.html) - La Estructura
-* **`inicio.html`**: Es el archivo principal y el punto de entrada. Se define la barra de navegación, el menú lateral y los contenedores vacíos (divs) donde posteriormente se visualizarán los gráficos y las fotos mediante JavaScript.
+* inicio.html: Es el archivo principal y el punto de entrada. Se define la barra de navegación, el menú lateral y los contenedores vacíos (divs) donde posteriormente se visualizarán los gráficos y las fotos mediante JavaScript.
 #### CSS (.css) - El Diseño Visual
 * styles.css: Es la hoja de estilos encargada de la apariencia visual. Aquí se definen:
     * La paleta de colores corporativa de Lookiero (tonos teja, beige y neutros).

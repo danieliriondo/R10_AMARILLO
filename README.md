@@ -28,7 +28,7 @@ En este script se limpia y se procesa los datos originales de las prendas para c
 En este script se implementa una solucion para la prediccion de las relaciones entre una prenda nueva y las prendas anteriormente incorporadas al sistema mediante modelo GNN.
 
 ## producer.py
-Este script actúa como una interfaz de usuario (Flask) que recibe los datos de una prenda, utiliza un modelo GNN para generar los mejores "outfits" posibles y envía esas recomendaciones a un servidor de Kafka. Para la ejecucion de este script es necesario descargarse el modelo subido a drive que se obtiene tras la ejecucion de los scripts 01_Preprocesamiento_Analisis y 02_Modelado. Y para que en las recomendaciones aparezcan los nombres de las prendas en vez de los ID es necesario la ejecucion del script 01_Preprocesamiento_Analisis (Si no se ejecuta este script en las recomendaciones apareceran los IDs)
+Este script actúa como una interfaz de usuario (Flask) que recibe los datos de una prenda, utiliza un modelo GNN para generar los mejores "outfits" posibles y envía esas recomendaciones a un servidor de Kafka. Para la ejecucion de este script es necesario descargarse el modelo subido a drive que se obtiene tras la ejecucion de los scripts 01_Preprocesamiento_Analisis y 02_Modelado y meterlo en la carpeta Modelos. Y para que en las recomendaciones aparezcan los nombres de las prendas en vez de los ID es necesario la ejecucion del script 01_Preprocesamiento_Analisis (Si no se ejecuta este script en las recomendaciones apareceran los IDs)
 
 ## consumer.py
 Este script se conecta al servidor de Kafka para recibir en tiempo real las recomendaciones generadas y las muestra de forma visual en un tablero o panel de control (dashboard) web.

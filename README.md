@@ -38,7 +38,21 @@ En este script se analiza el cuestionario inicial de la web de Lookiero.
 
 ## Caracterizacion_Analisis.ipynb
 En este script se lleva a cabo la caracterizacion y analisis de los datos de Look&Like.
+## Página web
+En esta carpeta se encuentran todos los archivos necesarios para ejecutar y poder visualizar la página web que se ha desarrollado para el apartado de Visualización de Datos. 
+A continuación, se van a especificar las acciones que a simple vista no son tan visibles de la página web.
+Funcionalidades Específicas de la Interfaz
 
+La aplicación cuenta con dos accesos directos situados en los extremos de la navegación para consultar información contextual:
+
+### 1. Ficha del Cliente (Barra Superior)
+Ubicada en la **esquina superior derecha** de la cabecera (*Topbar*), junto al logotipo.
+* **Cómo acceder:** Haz clic sobre la imagen circular (avatar) o el enlace.
+* **Qué muestra:** Despliega la información demográfica y los datos clave de la empresa
+### 2. Créditos del Equipo (Footer)
+Ubicado en el **pie de página** de la web, al final del scroll.
+* **Cómo acceder:** Haz clic en el botón/enlace situado en el footer.
+* **Qué muestra:** Abre una sección dedicada donde se presentan los **6 participantes** del equipo de desarrollo ("Grupo Amarillo") que han realizado este proyecto.
 ## Integrantes
 - Anne Martin Basterrechea
 - Gorka Fernandez Arnaiz

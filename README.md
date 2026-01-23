@@ -39,12 +39,20 @@ En este script se analiza el cuestionario inicial de la web de Lookiero.
 ## Caracterizacion_Analisis.ipynb
 En este script se lleva a cabo la caracterizacion y analisis de los datos de Look&Like.
 ## Página web
-En esta carpeta se encuentran todos los archivos necesarios para ejecutar y poder visualizar la página web que se ha desarrollado para el apartado de Visualización de Datos. 
+En esta carpeta se encuentran todos los archivos necesarios para ejecutar y poder visualizar la página web que se ha desarrollado.
+Aquí se describe la función de los archivos principales incluidos en la carpeta:
+### HTML (`.html`) - La Estructura
+* **`inicio.html`**: Es el archivo principal y el punto de entrada. Se define la barra de navegación, el menú lateral y los contenedores vacíos (divs) donde posteriormente se visualizarán los gráficos y las fotos mediante JavaScript.
+### CSS (`.css`) - El Diseño Visual
+* **`styles.css`**: Es la hoja de estilos encargada de la apariencia visual. Aquí se definen:
+    * La paleta de colores corporativa de Lookiero (tonos teja, beige y neutros).
+    * La tipografía (*Playfair Display* e *Inter*).
+    * La maquetación de las tarjetas, sombras, botones y la adaptación a diferentes tamaños de pantalla (diseño responsivo).
+### JavaScript (`.js`) - La Lógica y los Datos
+Son los archivos encargados de dar interactividad y cargar los datos dinámicamente
+funcionalidades específicas de la interfaz.
+
 A continuación, se van a especificar las acciones que a simple vista no son tan visibles de la página web.
-Funcionalidades Específicas de la Interfaz
-
-La aplicación cuenta con dos accesos directos situados en los extremos de la navegación para consultar información contextual:
-
 ### 1. Ficha del Cliente (Barra Superior)
 Ubicada en la **esquina superior derecha** de la cabecera (*Topbar*), junto al logotipo.
 * **Cómo acceder:** Haz clic sobre la imagen circular (avatar) o el enlace.

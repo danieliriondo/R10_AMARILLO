@@ -39,6 +39,7 @@ En este script se analiza el cuestionario inicial de la web de Lookiero.
 ## Caracterizacion_Analisis.ipynb
 En este script se lleva a cabo la caracterizacion y analisis de los datos de Look&Like.
 ## Página web
+Para el funcionamiento de la página web, es necesario ejecutar los scripts 'Caracterizacion_Analisis.ipynb' y '01 _Preprocesamiento_Analisis.ipynb' ya que generan CSV-s que son necesarios para el dashboard.
 En esta carpeta se encuentran todos los archivos necesarios para ejecutar y poder visualizar la página web que se ha desarrollado.
 Aquí se describe la función de los archivos principales incluidos en la carpeta:
 #### HTML (.html) - La Estructura

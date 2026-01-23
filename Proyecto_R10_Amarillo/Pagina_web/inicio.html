@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Lookiero Analytics</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter&display=swap" rel="stylesheet">
+  
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+  <header class="topbar">
+    <div class="topbar-left">
+      <button id="menu-btn">☰</button>
+      <h1>Lookiero</h1>
+    </div>
+
+    <a onclick="showSection('cliente')" class="profile-link">
+       <span class="hover-text">Sobre el Cliente</span>
+       <img src="lookiero_logo.png" alt="Perfil" class="header-img"> 
+    </a>
+  </header>
+
+  <nav id="sidebar" class="sidebar">
+    <ul>
+      <li id="tab-inicio" class="active" onclick="showSection('inicio')">Inicio</li>
+      
+      <li id="btn-graficos" onclick="toggleSubmenu('submenu-graficos')">
+        Gráficos <span class="arrow">▼</span>
+      </li>
+      <ul id="submenu-graficos" class="submenu">
+        <li id="tab-prendas" onclick="showSection('prendas')">Prendas</li>
+        <li id="tab-looklike" onclick="showSection('looklike')">Gráficos L&L</li>
+      </ul>
+
+      <li id="tab-modelo" onclick="showSection('modelo')">Modelo Look & Like</li>
+      <li id="tab-usuario" onclick="showSection('usuario')">Usuario UX</li>
+      <li id="tab-looks" onclick="showSection('looks')">Looks Finales</li>
+    </ul>
+  </nav>
+
+  <main id="content">
+    
+    <section id="inicio" class="section active p-0"> 
+        
+      <div class="hero-header">
+        <div class="container">
+            <div class="mb-4">
+                <span class="hero-badge">Reto 10: Business Data Analytics</span>
+                <span class="hero-badge">Grupo Amarillo</span>
+            </div>
+            
+            <h1 class="hero-title">
+                Tu estilo, reinventado con Datos.
+            </h1>
+            
+            <p class="hero-subtitle">
+                Conectamos datos y estilo para crear el look perfecto para ti.
+            </p>
+
+            <div class="d-flex justify-content-center gap-3">
+                <button onclick="showSection('looks')" class="btn btn-light rounded-pill px-4 py-2 fw-bold text-main shadow-sm" style="color: var(--color-principal);">
+                     Ver Looks Generados
+                </button>
+            </div>
+        </div>
+      </div>
+
+      <div class="container px-4">
+          <div class="integrated-tools-bar">
+              
+              <div class="tool-section" onclick="showSection('looklike')">
+                  <div class="tool-icon"></div> <h4 class="tool-title">Analytics</h4>
+                  <p class="tool-text">Visualiza los datos de interacciones y preferencias.</p>
+                  <span class="tool-action">Ver Gráficos</span>
+              </div>
+
+              <div class="tool-section" onclick="showSection('modelo')">
+                  <div class="tool-icon"></div>
+                  <h4 class="tool-title">Modelo</h4>
+                  <p class="tool-text">Algoritmo predictivo CatBoost + Grafos.</p>
+                  <span class="tool-action">Explorar Modelo</span>
+              </div>
+
+              <div class="tool-section" onclick="showSection('looks')">
+                  <div class="tool-icon"></div>
+                  <h4 class="tool-title">Resultados</h4>
+                  <p class="tool-text">Galería de looks finales personalizados.</p>
+                  <span class="tool-action">Ver Galería</span>
+              </div>
+
+          </div>
+      </div>
+
+      <div class="container pb-5 mt-5">
+        <div class="row pt-4">
+            <div class="col-12 text-center mb-5">
+                <h3 class="fw-bold display-6" style="color: var(--color-oscuro); font-family: 'Playfair Display', serif;">Lo que opinan las clientas</h3>
+                <p class="text-muted">Historias reales de renovación de estilo</p>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm p-4 text-center hover-lift" style="background-color: #fff; border-radius: 15px;">
+                    <div class="d-flex justify-content-center mb-3 position-relative">
+                        <img src="fotos_opiniones/mujer55.png" alt="Carmen" class="rounded-circle shadow-sm" style="width: 160px; height: 160px; object-fit: cover; border: 4px solid var(--color-secundario);">
+                        <div class="position-absolute bg-white rounded-circle shadow-sm p-1" style="bottom: 0; right: 30%; font-size: 1.5rem;">👏</div>
+                    </div>
+                    <h5 class="fw-bold mb-1" style="color: var(--color-principal);">Carmen</h5>
+                    <span class="badge bg-light text-dark mb-3 mx-auto" style="width: fit-content;">55 años • Estilo Clásico</span>
+                    <p class="text-muted small fst-italic px-2" style="line-height: 1.6;">
+                        "A mis 55 años, pensaba que ya tenía mi estilo completamente definido... <strong>Lookiero ha sido una maravillosa sorpresa.</strong> Mi estilista ha sabido leer perfectamente entre líneas"
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm p-4 text-center hover-lift" style="background-color: #fff; border-radius: 15px;">
+                    <div class="d-flex justify-content-center mb-3 position-relative">
+                        <img src="fotos_opiniones/mujer40.png" alt="Laura" class="rounded-circle shadow-sm" style="width: 160px; height: 160px; object-fit: cover; border: 4px solid var(--color-secundario);">
+                        <div class="position-absolute bg-white rounded-circle shadow-sm p-1" style="bottom: 0; right: 30%; font-size: 1.5rem;">⚡</div>
+                    </div>
+                    <h5 class="fw-bold mb-1" style="color: var(--color-principal);">Laura</h5>
+                    <span class="badge bg-light text-dark mb-3 mx-auto" style="width: fit-content;">40 años • Estilo Casual</span>
+                    <p class="text-muted small fst-italic px-2" style="line-height: 1.6;">
+                        "¡Menudo descubrimiento! Entre el trabajo y los niños, mi tiempo es nulo... <strong>Han acertado de lleno</strong>con prendas cómodas con ese toque divertido"
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm p-4 text-center hover-lift" style="background-color: #fff; border-radius: 15px;">
+                    <div class="d-flex justify-content-center mb-3 position-relative">
+                        <img src="fotos_opiniones/mujer22.png" alt="Sofía" class="rounded-circle shadow-sm" style="width: 160px; height: 160px; object-fit: cover; border: 4px solid var(--color-secundario);">
+                        <div class="position-absolute bg-white rounded-circle shadow-sm p-1" style="bottom: 0; right: 30%; font-size: 1.5rem;">✨</div>
+                    </div>
+                    <h5 class="fw-bold mb-1" style="color: var(--color-principal);">Sofía</h5>
+                    <span class="badge bg-light text-dark mb-3 mx-auto" style="width: fit-content;">22 años • Estilo Trendy</span>
+                    <p class="text-muted small fst-italic px-2" style="line-height: 1.6;">
+                        "Estaba escéptica, me daba miedo que me enviaran cosas 'de madre'. <strong>¡Pero qué va, me ha flipado!</strong> Mi Personal Shopper lo ha clavado."
+                    </p>
+                </div>
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="cliente" class="section" style="background-color: #fafafa; height: calc(100vh - 60px); overflow-y: auto;">
+      <div class="container-fluid h-100 p-0"> 
+        <div class="row g-0 h-100">
+            <div class="col-lg-4 d-none d-lg-block h-100 relative-position">
+                <img src="burro.png" alt="Fashion Closet" class="h-100 w-100" style="object-fit: cover;">
+                <div class="hero-overlay p-4">
+                    <h3 class="text-white fw-bold">Fashion Intelligence</h3>
+                    <p class="text-white-50 mb-0">Donde los datos encuentran el estilo.</p>
+                </div>
+            </div>
+            <div class="col-lg-8 h-100">
+                <div class="p-4 p-xxl-5 h-100 d-flex flex-column justify-content-center">
+                    <div class="d-flex align-items-center justify-content-between mb-4 border-bottom pb-3">
+                        <div class="d-flex align-items-center gap-3">
+                            <img src="logo.jpg" alt="Logo" style="height: 40px;">
+                            <div>
+                                <h2 class="h4 fw-bold mb-0 text-dark">Perfil Corporativo</h2>
+                                <small class="text-muted">Personal Shopper Online Leader</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row g-4 h-100">
+                        <div class="col-12">
+                            <div class="card border-0 shadow-sm overflow-hidden bg-white">
+                                <div class="row g-0">
+                                    <div class="col-md-4">
+                                        <img src="caja.jpg" class="img-fluid h-100 w-100" style="object-fit: cover; min-height: 150px;" alt="Caja Lookiero">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body d-flex flex-column justify-content-center h-100">
+                                            <h5 class="fw-bold text-main">La Experiencia "Unboxing"</h5>
+                                            <p class="text-muted small mb-0">5 prendas seleccionadas por IA + Estilistas.
+                                            La clienta recibe la caja, se lo prueba en casa y paga solo por las prendas que se queda. 
+                                            Nuestro objetivo es maximizar el acierto en esta selección</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card h-100 border-0 shadow-sm p-3 bg-white">
+                                <h6 class="fw-bold text-dark border-bottom pb-2 mb-3">Datos Clave</h6>
+                                <ul class="list-unstyled small mb-0 clean-list">
+                                    <li class="mb-2 d-flex justify-content-between"><span class="text-muted">Sede:</span> <strong>Bilbao, ES</strong></li>
+                                    <li class="mb-2 d-flex justify-content-between"><span class="text-muted">Fundación:</span> <strong>2015</strong></li>
+                                    <li class="d-flex justify-content-between"><span class="text-muted">Modelo:</span> <strong>Suscripción</strong></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card h-100 border-0 shadow-sm p-3 text-white position-relative overflow-hidden" style="background-color: var(--color-principal);">
+                                <div class="position-relative z-1">
+                                    <h6 class="fw-bold border-bottom pb-2 mb-3 border-white">Misión Reto 10</h6>
+                                    <p class="small mb-3 opacity-75">Optimizar el algoritmo de asignación usando Grafos.</p>
+                                    <a href="https://lookiero.es" target="_blank" class="btn btn-sm btn-light rounded-pill px-3 fw-bold text-main">Web Oficial ↗</a>
+                                </div>
+                                <div style="position:absolute; right:-20px; bottom:-20px; font-size:6rem; opacity:0.1;">🎯</div>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="prendas" class="section">
+      <h2>Análisis de Prendas</h2>
+      <div class="container-fluid p-0 dashboard-container">
+        <div class="row mb-4">
+            <div class="col-md-3"><div class="card kpi-card"><div class="kpi-number" id="p-kpi-total">0</div><div class="kpi-label">Total Productos</div></div></div>
+            <div class="col-md-3"><div class="card kpi-card"><div class="kpi-number" id="p-kpi-style" style="font-size: 1.5rem">-</div><div class="kpi-label">Estilo Top</div></div></div>
+            <div class="col-md-3"><div class="card kpi-card"><div class="kpi-number" id="p-kpi-weather" style="font-size: 1.5rem">-</div><div class="kpi-label">Clima</div></div></div>
+            <div class="col-md-3"><div class="card kpi-card"><div class="kpi-number" id="p-kpi-brands">0</div><div class="kpi-label">Marcas</div></div></div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 mb-4"><div class="card h-100"><div class="card-header">Distribución por Estilo</div><div class="card-body" id="p-chart-style"></div></div></div>
+            <div class="col-lg-6 mb-4"><div class="card h-100"><div class="card-header">Top Estampados</div><div class="card-body d-flex justify-content-center" id="p-chart-print"></div></div></div>
+            <div class="col-12"><div class="card h-100"><div class="card-header">Top Tipos de Producto</div><div class="card-body" id="p-chart-product-type"></div></div></div>
+        </div>
+      </div>
+    </section>
+
+ <section id="looklike" class="section">
+        
+        <div class="mb-4">
+            <h2 class="fw-bold" style="font-family: 'Playfair Display', serif; color: var(--color-oscuro);">
+                Gráficos Look & Like
+            </h2>
+            <p class="text-muted">Análisis de interacciones y preferencias</p>
+        </div>
+
+        <div class="container-fluid p-0 dashboard-container">
+            
+            <div class="row mb-4">
+                <div class="col-md-3">
+                    <div class="card kpi-card" style="border-bottom: 4px solid var(--color-secundario)">
+                        <div class="kpi-number" id="l-kpi-total">0</div>
+                        <div class="kpi-label">Interacciones</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card kpi-card" style="border-bottom: 4px solid var(--color-principal)">
+                        <div class="kpi-number" id="l-kpi-rate" style="color: var(--color-principal)">0%</div>
+                        <div class="kpi-label">Like Rate</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card kpi-card" style="border-bottom: 4px solid var(--color-acento)">
+                        <div class="kpi-number" id="l-kpi-market">-</div>
+                        <div class="kpi-label">Marca Top</div> 
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card kpi-card" style="border-bottom: 4px solid var(--color-oscuro)">
+                        <div class="kpi-number" id="l-kpi-age">0</div>
+                        <div class="kpi-label">Edad Media</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-header">Éxito por Morfología</div>
+                        <div class="card-body">
+                            <div style="position: relative; height: 250px; width: 100%;">
+                                <canvas id="l-chart-body"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-8 mb-4">
+                    <div class="card h-100">
+                        <div class="card-header">Marcas: Likes vs Total</div>
+                        <div class="card-body">
+                            <div style="position: relative; height: 250px; width: 100%;">
+                                <canvas id="l-chart-brands"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-header">Desempeño por Fase</div> 
+                        <div class="card-body">
+                            <div style="position: relative; height: 300px; width: 100%;">
+                                <canvas id="l-chart-market"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-header">Top Familias</div>
+                        <div class="card-body p-0 table-responsive">
+                            <table class="table table-hover mb-0">
+                                <thead style="background-color: var(--color-secundario)">
+                                    <tr>
+                                        <th class="ps-4">Familia</th>
+                                        <th class="text-center">Total</th>
+                                        <th class="text-end pe-4">Like Rate</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="l-table-families">
+                                    </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="modelo" class="section">
+        <div class="container-fluid p-0 dashboard-container">
+            
+            <div class="row mb-4">
+                <div class="col-12">
+                    <h2>Modelo Look & Like</h2>
+                    <p class="lead" style="color: var(--color-principal);">Resultados del Algoritmo CatBoost</p>
+                </div>
+            </div>
+
+            <div class="row g-4 mb-5">
+                <div class="col-12">
+                    <div class="card border-0 shadow-sm p-4 bg-white">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h4 class="mb-0" style="color: var(--color-principal);">Metodología CatBoost</h4>
+                            <span class="badge bg-success" style="font-size: 1rem;">AUC: 0.82</span>
+                        </div>
+                        <p>
+                            Se ha implementado un modelo <strong>CatBoost Classifier</strong>, optimizado para manejar variables categóricas automáticamente (como el tipo de prenda o profesión).
+                            El entrenamiento con <strong>349,262 registros</strong> ha permitido identificar patrones complejos.
+                        </p>
+                        
+                        <hr class="my-4">
+
+                        <div class="row text-center">
+                            <div class="col-md-4">
+                                <div class="fs-1 mb-2">📥</div>
+                                <h6 class="fw-bold">1. Limpieza de Datos</h6>
+                                <p class="small text-muted">
+                                    Eliminación de columnas con >90% nulos (ej. <code>heel_length</code>) e imputación de categóricas.
+                                </p>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="fs-1 mb-2">⚙️</div>
+                                <h6 class="fw-bold">2. Feature Engineering</h6>
+                                <p class="small text-muted">
+                                    El modelo ha detectado que la combinación de <strong>Talla + Copa (bra_complete)</strong> es el mayor predictor de éxito.
+                                </p>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="fs-1 mb-2">🚀</div>
+                                <h6 class="fw-bold">3. Resultado</h6>
+                                <p class="small text-muted">
+                                    Capacidad predictiva sólida (AUC 0.82) para personalizar la asignación de prendas.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h4 class="mb-3" style="color: var(--color-oscuro);">Resultados Visuales</h4>
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="card h-100 border-0 shadow-sm p-3">
+                        <div class="card-body">
+                            <h5 class="card-title text-center mb-3">Rendimiento Global</h5>
+                            <div style="height: 300px;">
+                                <canvas id="chart-performance"></canvas>
+                            </div>
+                            <p class="small text-muted text-center mt-2">
+                                Un AUC de 0.82 confirma que el modelo distingue eficazmente entre prendas gustadas y rechazadas.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card h-100 border-0 shadow-sm p-3">
+                        <div class="card-body">
+                            <h5 class="card-title text-center mb-3">Variables Determinantes</h5>
+                            <div style="height: 300px;">
+                                <canvas id="chart-features"></canvas>
+                            </div>
+                            <p class="small text-muted text-center mt-2">
+                                La <strong>Talla de Sujetador (10.6%)</strong> y el <strong>Estampado (8.4%)</strong> dominan la decisión, superando al precio.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+   
+    <section id="usuario" class="section">
+        
+        <div class="mb-5">
+            <h2 class="fw-bold mb-2" style="font-family: 'Playfair Display', serif; color: var(--color-oscuro); font-size: 2.5rem;">
+                Análisis de Usuario (UX)
+            </h2>
+            <p class="lead" style="color: var(--color-principal); font-size: 1.1rem; max-width: 800px;">
+                Un estudio integral del <em>Customer Journey</em> combinando analítica de datos masiva y principios de diseño conductual para optimizar la conversión.
+            </p>
+        </div>
+
+        <div class="container-fluid p-0 dashboard-container">
+            
+            <div class="row mb-5">
+                <div class="col-12">
+                    <div class="card h-100" style="background-color: #fff; border-left: 5px solid var(--color-principal);">
+                        <div class="card-body p-4">
+                            <h5 class="fw-bold mb-4" style="color: var(--color-oscuro); text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px;">Metodología del Estudio</h5>
+                            <div class="row g-4">
+                                <div class="col-md-6 d-flex align-items-start gap-3">
+                                    <div style="font-size: 2rem; opacity: 0.8;">🔍</div>
+                                    <div>
+                                        <strong style="color: var(--color-principal);">Benchmarking Competitivo</strong>
+                                        <p class="small text-muted mb-0" style="line-height: 1.5;">
+                                            Comparativa con líderes del sector para identificar estándares de usabilidad. Se detecta que la complejidad cognitiva inicial es la mayor barrera de entrada.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 d-flex align-items-start gap-3">
+                                    <div style="font-size: 2rem; opacity: 0.8;">📈</div>
+                                    <div>
+                                        <strong style="color: var(--color-principal);">Analítica de Datos (50k Sesiones)</strong>
+                                        <p class="small text-muted mb-0" style="line-height: 1.5;">
+                                            Rastreo del comportamiento real en el funnel. Identificación de puntos de fuga críticos y tiempos de "parálisis por análisis" en preguntas subjetivas.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex align-items-center mb-4 mt-5">
+                <h4 class="fw-bold m-0" style="color: var(--color-oscuro); font-family: 'Playfair Display', serif;">Diagnóstico Cuantitativo</h4>
+                <div class="flex-grow-1 ms-3" style="height: 1px; background-color: var(--color-secundario);"></div>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col-md-3">
+                    <div class="card kpi-card">
+                        <div class="kpi-number" style="color: var(--color-oscuro)">58.5%</div>
+                        <div class="kpi-label">Conversión Directa</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card kpi-card">
+                        <div class="kpi-number" style="color: var(--color-oscuro)">19.5%</div>
+                        <div class="kpi-label">Recapturadas</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card kpi-card">
+                        <div class="kpi-number" style="color: var(--color-oscuro)">9.8%</div>
+                        <div class="kpi-label">Abandono Recurrente</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card kpi-card">
+                        <div class="kpi-number" style="color: var(--color-oscuro)">+50s</div>
+                        <div class="kpi-label">Fricción Máxima</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-5 mb-4">
+                    <div class="card h-100">
+                        <div class="card-header">Tipología de Usuarias</div>
+                        <div class="card-body p-4 d-flex justify-content-center align-items-center">
+                            <div style="height: 300px; width: 100%;">
+                                <canvas id="chart-user-segments"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-7 mb-4">
+                    <div class="card h-100">
+                        <div class="card-header">Fricción Cognitiva (Tiempo)</div>
+                        <div class="card-body p-4">
+                            <div style="height: 300px; width: 100%;">
+                                <canvas id="chart-user-time"></canvas>
+                            </div>
+                            <p class="small text-muted text-center mt-3">
+                                <strong>Quiz Styles</strong> supera el umbral de fricción (>30s), indicando "parálisis por análisis".
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 mb-4">
+                    <div class="card h-100">
+                        <div class="card-header">Puntos de Fuga (Funnel)</div>
+                        <div class="card-body p-4">
+                            <div style="height: 350px; width: 100%;">
+                                <canvas id="chart-user-funnel"></canvas>
+                            </div>
+                            <p class="small text-muted mt-3 text-center">
+                                *Caída crítica del <strong>24%</strong> detectada en la sección de calzado.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex align-items-center mb-4 mt-5">
+                <h4 class="fw-bold m-0" style="color: var(--color-oscuro); font-family: 'Playfair Display', serif;">Estrategia de Optimización</h4>
+                <div class="flex-grow-1 ms-3" style="height: 1px; background-color: var(--color-secundario);"></div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="card h-100">
+                        <div class="card-header">Ley de la Simplicidad</div>
+                        <div class="card-body p-4">
+                            <p class="text-muted" style="font-size: 0.95rem; line-height: 1.6;">
+                                Siguiendo los principios de Maeda, la complejidad no se debe eliminar, sino <strong>posponer</strong>. Preguntas sensibles como medidas exactas o precios generan fricción innecesaria al inicio.
+                            </p>
+                            <div class="mt-3 p-3 bg-light rounded border-start border-3" style="border-color: var(--color-principal) !important;">
+                                <strong style="color: var(--color-oscuro); font-size: 0.85rem;">PROPUESTA DE ACCIÓN:</strong><br>
+                                <span class="small text-muted">Mover <code>quiz_measurements</code> y presupuesto al post-registro para reducir la carga cognitiva inicial.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="card h-100">
+                        <div class="card-header">El Valor del Contexto</div>
+                        <div class="card-body p-4">
+                            <p class="text-muted" style="font-size: 0.95rem; line-height: 1.6;">
+                                Los contenidos editoriales no son accesorios; actúan como puente entre la exploración y la conversión. Educar a la usuaria aumenta su confianza en la selección algorítmica.
+                            </p>
+                            <div class="mt-3 p-3 bg-light rounded border-start border-3" style="border-color: var(--color-acento) !important;">
+                                <strong style="color: var(--color-oscuro); font-size: 0.85rem;">PROPUESTA DE ACCIÓN:</strong><br>
+                                <span class="small text-muted">Integrar "Tips de Estilista" visuales directamente en las preguntas de estilo para guiar la decisión.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="card h-100">
+                        <div class="card-header">Ecosistema Recurrente</div>
+                        <div class="card-body p-4">
+                            <p class="text-muted" style="font-size: 0.95rem; line-height: 1.6;">
+                                Transformar el cuestionario de un "evento único" a un <strong>diálogo continuo</strong>. La captación de datos debe ser progresiva a lo largo del ciclo de vida de la clienta.
+                            </p>
+                            <div class="mt-3 p-3 bg-light rounded border-start border-3" style="border-color: var(--color-oscuro) !important;">
+                                <strong style="color: var(--color-oscuro); font-size: 0.85rem;">PROPUESTA DE ACCIÓN:</strong><br>
+                                <span class="small text-muted">Implementar "Micro-encuestas" post-compra para refinar el algoritmo sin saturar.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="looks" class="section">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+          <h2>Looks Generados</h2>
+      </div>
+
+      <div class="looks-nav-container mb-4">
+          <div id="looks-buttons" class="d-flex gap-2 overflow-auto py-2 justify-content-start">
+             </div>
+      </div>
+
+      <div class="card border-0 shadow-sm overflow-hidden" style="min-height: 500px; border-radius: 20px;">
+          <div class="row g-0 h-100 align-items-stretch">
+              
+              <div class="col-md-5 bg-light d-flex align-items-center justify-content-center p-0 position-relative" style="background-color: #f4f4f4; min-height: 400px;">
+                  <img id="look-current-img" src="looks/look_1.png" alt="Selecciona un look" 
+                       style="width: 100%; height: 100%; object-fit: cover; transition: opacity 0.3s;">
+              </div>
+
+              <div class="col-md-7 p-5 d-flex flex-column justify-content-center">
+                  
+                  <div class="mb-3">
+                      <span class="badge rounded-pill bg-secondary text-white px-3 py-2">Imagen generada por IA</span>
+                  </div>
+
+                  <h3 id="look-current-title" class="fw-bold mb-4" style="color: var(--color-principal); font-family: 'Playfair Display', serif;">
+                      Selecciona un Look
+                  </h3>
+                  
+                  <div id="look-current-desc" class="text-muted" style="font-size: 1.1rem; line-height: 1.6;">
+                      <p>Haz clic en los botones de arriba para ver las propuestas generadas por el algoritmo.</p>
+                  </div>
+
+              </div>
+
+          </div>
+      </div>
+    </section>
+
+    <section id="equipo" class="section">
+        <div class="container py-5">
+            
+            <div class="text-center mb-5">
+                <span class="badge rounded-pill px-3 py-2 mb-3" style="background-color: var(--color-principal); color: white; letter-spacing: 1px;">
+                    BDATA III
+                </span>
+                <h2 class="display-5 fw-bold mb-3" style="font-family: 'Playfair Display', serif; color: var(--color-oscuro);">
+                    Equipo de Desarrollo
+                </h2>
+                <p class="lead text-muted mx-auto" style="max-width: 600px;">
+                    Trabajo desarrollado por el <strong>Grupo Amarillo</strong> para el Reto 10 de BDATA3.
+                </p>
+                <hr class="mx-auto my-4" style="width: 50px; border-top: 3px solid var(--color-secundario); opacity: 1;">
+            </div>
+
+            <div class="row g-4 justify-content-center">
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-0 shadow-sm p-4 text-center hover-lift">
+                        <div class="mx-auto mb-3 d-flex align-items-center justify-content-center rounded-circle" 
+                             style="width: 80px; height: 80px; background-color: #FFE0D6; color: var(--color-principal); font-size: 1.5rem; font-family: 'Playfair Display', serif;">
+                            N1 </div>
+                        <h5 class="fw-bold mb-1" style="color: var(--negro);">Garazi Martinez de Marigorta</h5>
+                        <a href="mailto:correo1@email.com" class="btn btn-sm btn-outline-light text-muted border-secondary rounded-pill px-3">
+                            ✉️ garazi.martinezdemar@alumni.mondragon.edu
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-0 shadow-sm p-4 text-center hover-lift">
+                        <div class="mx-auto mb-3 d-flex align-items-center justify-content-center rounded-circle" 
+                             style="width: 80px; height: 80px; background-color: #FFE0D6; color: var(--color-principal); font-size: 1.5rem; font-family: 'Playfair Display', serif;">
+                            N2
+                        </div>
+                        <h5 class="fw-bold mb-1" style="color: var(--negro);">Anne Martin</h5>
+                        <a href="mailto:correo2@email.com" class="btn btn-sm btn-outline-light text-muted border-secondary rounded-pill px-3">
+                            ✉️ anne.martinb@alumni.mondragon.edu
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-0 shadow-sm p-4 text-center hover-lift">
+                        <div class="mx-auto mb-3 d-flex align-items-center justify-content-center rounded-circle" 
+                             style="width: 80px; height: 80px; background-color: #FFE0D6; color: var(--color-principal); font-size: 1.5rem; font-family: 'Playfair Display', serif;">
+                            N3
+                        </div>
+                        <h5 class="fw-bold mb-1" style="color: var(--negro);">Gorka Fernandez</h5>
+                        <a href="mailto:correo3@email.com" class="btn btn-sm btn-outline-light text-muted border-secondary rounded-pill px-3">
+                            ✉️ gorka.fernandeza@alumni.mondragon.edu
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-0 shadow-sm p-4 text-center hover-lift">
+                        <div class="mx-auto mb-3 d-flex align-items-center justify-content-center rounded-circle" 
+                             style="width: 80px; height: 80px; background-color: #fcece6; color: var(--color-principal); font-size: 1.5rem; font-family: 'Playfair Display', serif;">
+                            N4
+                        </div>
+                        <h5 class="fw-bold mb-1" style="color: var(--negro);">Martina Alvarez</h5>
+                        <a href="mailto:correo4@email.com" class="btn btn-sm btn-outline-light text-muted border-secondary rounded-pill px-3">
+                            ✉️ martinavirginia.alva@alumni.mondragon.edu
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-0 shadow-sm p-4 text-center hover-lift">
+                        <div class="mx-auto mb-3 d-flex align-items-center justify-content-center rounded-circle" 
+                             style="width: 80px; height: 80px; background-color: #fcece6; color: var(--color-principal); font-size: 1.5rem; font-family: 'Playfair Display', serif;">
+                            N5
+                        </div>
+                        <h5 class="fw-bold mb-1" style="color: var(--negro);">Daniel Iriondo</h5>
+                        <a href="mailto:correo5@email.com" class="btn btn-sm btn-outline-light text-muted border-secondary rounded-pill px-3">
+                            ✉️ daniel.iriondo@alumni.mondragon.edu
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-0 shadow-sm p-4 text-center hover-lift">
+                        <div class="mx-auto mb-3 d-flex align-items-center justify-content-center rounded-circle" 
+                             style="width: 80px; height: 80px; background-color: #fcece6; color: var(--color-principal); font-size: 1.5rem; font-family: 'Playfair Display', serif;">
+                            N6
+                        </div>
+                        <h5 class="fw-bold mb-1" style="color: var(--negro);">Leire Silva</h5>
+                        <a href="mailto:leire.silva@alumni.mondragon.edu" class="btn btn-sm btn-outline-light text-muted border-secondary rounded-pill px-3">
+                            ✉️ leire.silva@alumni.mondragon.edu
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="text-center mt-5">
+                <button onclick="showSection('inicio')" class="btn btn-outline-dark rounded-pill px-4">
+                    ← Volver al Inicio
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="container-fluid dashboard-container">
+            <div class="footer-content">
+                
+                <div class="d-flex flex-column">
+                    <span class="footer-title">Visualización de Datos III</span>
+                    <span class="footer-subtitle">Reto 10 · Business Data Analytics</span>
+                </div>
+
+                <div>
+                    <button onclick="showSection('equipo')" class="badge-elegant border-0 bg-transparent p-0" style="cursor: pointer;">
+                        <span class="badge-elegant">Grupo Amarillo</span>
+                    </button>
+                </div>
+
+                <div class="text-end d-flex flex-column align-items-end">
+                    <span class="footer-brand">Lookiero.</span>
+                    <span class="footer-copyright">Analytics &copy; 2026</span>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+  </main>
+
+  <script src="script.js"></script>
+  <script src="dashboard_prendas.js"></script>
+  <script src="dashboard_looklike.js"></script>
+  <script src="dashboard_looks.js"></script>
+  <script src="dashboard_usuario.js"></script> 
+  <script src="modelo_looklike.js"></script>
+</body>
+</html>
